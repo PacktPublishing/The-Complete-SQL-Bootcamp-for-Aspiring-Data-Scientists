@@ -1,0 +1,60 @@
+CTE Code
+-- With Subqueries
+
+
+SELECT *
+
+FROM   (SELECT Region, CAST(SUM(Sales) as INT) AS total_sales
+
+FROM Orders
+
+GROUP BY Region) as t1
+
+JOIN
+
+(SELECT AVG(total_sales) as avg_sales
+
+FROM ( SELECT Region, CAST(SUM(Sales) as INT) AS total_sales
+
+FROM Orders
+
+GROUP BY Region) as avgsale) as t2
+
+ON t1.total_sales > t2.avg_sales
+
+
+
+
+
+-- With CTE
+
+
+WITH cte_totalsales (Region1,total_sales)
+
+AS
+
+(SELECT Region, CAST(SUM(Sales) as INT) AS total_sales
+
+FROM Orders
+
+GROUP BY Region
+
+),
+
+cte_avgsales (avg_sales)
+
+AS
+
+(SELECT AVG(total_sales) as avg_sales
+
+FROM cte_totalsales
+
+)
+
+SELECT ts.Region1, ts.total_sales, avgsale.avg_sales
+
+FROM cte_totalsales ts
+
+INNER JOIN cte_avgsales avgsale
+
+ON ts.total_sales > avgsale.avg_sales

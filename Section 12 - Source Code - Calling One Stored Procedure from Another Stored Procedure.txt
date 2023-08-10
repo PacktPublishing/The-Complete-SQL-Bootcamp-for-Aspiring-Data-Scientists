@@ -1,0 +1,80 @@
+CREATE PROCEDURE usp_MyOrderDetail
+
+@orderID VARCHAR(20),
+
+@customerID VARCHAR(20) OUTPUT,
+
+@sales FLOAT OUTPUT,
+
+@profit FLOAT OUTPUT
+
+AS
+
+BEGIN
+
+IF EXISTS(SELECT 1 FROM Orders WHERE [Order ID] = @orderID)
+
+BEGIN
+
+SELECT @customerID = [Customer ID], @profit = Profit, @sales = Sales
+
+FROM Orders
+
+WHERE [Order ID] = @orderID
+
+RETURN 0
+
+END
+
+ELSE
+
+RETURN 1
+
+END
+
+
+
+
+
+CREATE PROCEDURE usp_DisplayOrderDetails
+
+@orderID VARCHAR(20)
+
+AS
+
+BEGIN
+
+DECLARE @customerID VARCHAR(20)
+
+DECLARE @sales FLOAT
+
+DECLARE @profit FLOAT
+
+DECLARE @ReturnValue INT
+
+EXECUTE @ReturnValue = usp_MyOrderDetail @orderID, @customerID OUTPUT, @sales OUTPUT, @profit OUTPUT
+
+IF (@ReturnValue = 0)
+
+BEGIN
+
+PRINT 'The customer ID is ' + @customerID
+
+PRINT 'The sales value is ' + CONVERT(VARCHAR(10), @sales)
+
+PRINT 'The profit value is ' + CONVERT(VARCHAR(10), @profit)
+
+SELECT * FROM ORDERS Where [Order ID] = @orderID
+
+END
+
+ELSE
+
+PRINT 'No Order Exist!!!'
+
+END
+
+
+
+EXECUTE usp_DisplayOrderDetails 'CA-2011-115812'
+
