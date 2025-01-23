@@ -1,2 +1,6 @@
-# The-Complete-SQL-Bootcamp-for-Aspiring-Data-Scientists
-The Complete SQL Bootcamp for Aspiring Data Scientists, by Packt Publishing
+# The Ultimate SQL Bootcamp: Zero to Hero in 9 Hours
+The Ultimate SQL Bootcamp: Zero to Hero in 9 Hours, by Packt Publishing
+
+This immersive course is designed to take you from a complete beginner to a confident SQL practitioner. Starting with the foundational concepts of databases and SQL setup, you'll learn how to create, manage, and query databases efficiently. Early lessons focus on fundamental operations like DDL and DML statements, while subsequent sections introduce advanced concepts, including data integrity, grouping, filtering, and table relationships.
+As you progress, you'll explore critical SQL features like functions, joins, and window functions, which are essential for building powerful and efficient queries. Advanced topics such as subqueries, stored procedures, and set operators will further enhance your skills. To solidify your understanding, you'll delve into SQL Query execution order and create virtual tables using views.
+The course culminates in a newly added portfolio project, where you'll analyze EuroMart data. You'll clean, explore, and extract insights using SQL, showcasing your ability to handle real-world data challenges. By the end, you’ll not only master SQL but also have a tangible project to present to potential employers.
